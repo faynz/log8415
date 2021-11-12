@@ -36,7 +36,7 @@
 \end{titlepage}
 
 \tableofcontents
-\pagebreak[]
+\pagebreak
 
 \section{Abstract}
 \paragraph{} In this laboratory, we had the opportunity to explore the MapReduce paradigm. We successfully compared the performance of the algorithm on Linux, Hadoop and Spark with different experiments. At first, we compared Spark and Hadoop in a simple WordCount program to observe the difference in performance between the two. We ran it all on AWS, Amazon’s cloud computing platform, by creating an EC2 instance.
@@ -56,7 +56,15 @@ Might Know" social network friendship recommendation algorithm (section ~\ref{se
 % \cite{1}
 
 \section{Experiments with WordCount program} \label{sec:WordCount}
+
+\paragraph{}
+We had the opportunity to explore the MapReduce paradigm. We successfully compared the performance of the algorithm on Linux, Hadoop and Spark with different experiments. At first, we compared Linux and Hadoop in a simple WordCount program to observe the difference in performance between the two. And then, we compared Hadoop vs Spark on AWS, Amazon’s cloud computing platform, by creating an EC2 instance.
+
 \section{Performance comparison of Hadoop vs Linux} \label{sec:HadoopVsLinux}
+
+\begin{center}
+  The result shows that our local machine Linux outperformed Hadoop.
+\end{center}
 
 \begin{center}
   \captionof{figure}{Comparison between Hadoop and Linux for the 9 texts}
@@ -260,6 +268,7 @@ This class is used as the output (value of the key-value pair) of the Mapper. It
 
 \section{Conclusion}
 \paragraph{}
+In conclusion, this study helped us achieve a deeper understanding Big Data and how to use software such as Hadoop and Spark to solve intricate data problems. We experimented with simple programs such as a WordCount program and used that knowledge to solve a more complex social networking problem (\textit{People You Might Know Algorithm}). By executing our own experiments, we also measured the performances of Hadoop and Spark's software and were able to conclude that in fact Spark operates at a much faster pace than Hadoop. The understanding of these softwares is primordial in today’s industry in order to achieve optimal performance when dealing with Big Data and complex data problems and therefore we are content with this assignment. The next step would be to create an application using Apache Spark and see how it performs.
 
 \begin{thebibliography} {}
 \bibitem{1} Goran Jevtic. (2020) Hadoop vs Spark – Detailed Comparison. [Online] Available: \url{https://phoenixnap.com/kb/hadoop-vs-spark#ftoc-heading-4}
