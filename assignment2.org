@@ -90,6 +90,16 @@
 
 \section{Performance comparison of Hadoop vs Spark on AWS}
 
+\paragraph{} For this experimentation, we leveraged AWS EC2 instances. As for the instance type, we used t3.xlarge which enables 4 vCPUs and 16 GiB of Memory. Below is the report for performance of Hadoop vs Spark. Basically, Spark outperforms Hadoop as we can see in the graph. To properly evaluate both Hadoop and Spark, we ran the WordCount three times on each machine and took the average time for both. In the following table (Table 2: Comparison between Hadoop and Spark for the 9 texts), we only show the average and not the individual results of each execution to avoid overloading this report. We also presented the data in a plot for a more visual comparison.
+
+\bigskip
+
+We used to time command in to measure the time it took to execute the wordcount program on each system:
+\begin{itemize}
+\item[--] Hadoop: time hadoop \dots
+\item[--] Apache Spark : time spark-submit \dots
+\end{itemize}
+
 \subsection{Results}
 
 \section{Description of MapReduce jobs to solve the social network problem}
