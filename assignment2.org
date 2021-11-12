@@ -39,18 +39,19 @@
 \pagebreak
 
 \section{Abstract}
-\paragraph{} In this laboratory, we had the opportunity to explore the MapReduce paradigm. We successfully compared the performance of the algorithm on Linux, Hadoop and Spark with different experiments. At first, we compared Spark and Hadoop in a simple WordCount program to observe the difference in performance between the two. We ran it all on AWS, Amazon’s cloud computing platform, by creating an EC2 instance.
+\paragraph{}
 
+When dealing with Big Data, we can choose from a variety of softwares to manage the data sets. A modern, scalable and cost-effective solution is to use software such as Apache Hadoop or Apache Spark to efficiently split the workload across a network of computers (\textit{"nodes"}) and therefore lower the execution time of large tasks. In this paper, we will explore both softwares and compare their differences and evaluate their performances by conducting a few experiments.
 
 \paragraph{Keywords:}Amazon Elastic Compute Cloud, Benchmark, Instance Performance, Cloud Application, MapReduce, Hadoop, Spark, Big Data, AWS
 \pagebreak
 
 \section{Introduction} \label{sec:introduction}
-\paragraph{} In this laboratory, we had the opportunity to explore the MapReduce paradigm. We successfully compared the performance of the algorithm on Linux, Hadoop and Spark with different experiments. At first, we compared Spark and Hadoop in a simple WordCount program to observe the difference in performance between the two. We ran it all on AWS, Amazon’s cloud computing platform, by creating an EC2 instance.
-
+\paragraph{} In this laboratory, we had the opportunity to explore the MapReduce paradigm. We successfully compared the performance of the algorithm on Linux, Hadoop and Spark with different experiments. At first, we compared their performances in a simple WordCount program and observed the differences. The WordCount program simply counts the occurrence of every single word in a document. We ran it all on AWS, Amazon's cloud computing platform, by creating an EC2 instance.
+Then, we used Hadoop and MapReduce to solve a social networking problem and process bigger data sets. The idea was to create a solution to suggest profiles (A.K.A People You May Know Algorithm).
 \bigskip
 
-This paper presents some of our experiments with a WordCount program (section ~\ref{sec:WordCount}), the results of our performance comparison between Hadoop and Linux (section ~\ref{sec:HadoopVsLinux}), the results of our performance comparison between Hadoop and Spark (section ~\ref{sec:HadoopVsSpark}) and our solution to a MapReduce program that implements the “People You
+\noindent This paper presents some of our experiments with a WordCount program (section ~\ref{sec:WordCount}), the results of our performance comparison between Hadoop and Linux (section ~\ref{sec:HadoopVsLinux}), the results of our performance comparison between Hadoop and Spark (section ~\ref{sec:HadoopVsSpark}) and our solution to the MapReduce program that implements the “People You
 Might Know" social network friendship recommendation algorithm (section ~\ref{sec:MapReduceDescription} & section ~\ref{sec:MapReduceAlgorithm}).
 
 % \cite{1}
@@ -144,7 +145,7 @@ We used to time command in to measure the time it took to execute the wordcount 
 
 \subsection{Results}
 
-\paragraph{} We began to experiment with the assumption that Spark would outperform Hadoop due to the fact Apache Spark processes the data in-memory instead of disk after performing a MapReduce. The previous table did not show us what we expected. In fact, we believed Spark would be at least 2x faster than Hadoop. When dealing with Big Data, Spark's performance could spike up to 3x faster according to Goran Jevtic \cite{1}. These results could therefore be explained by the fact we aren't dealing with Big Data. Also, the times we obtained might include Spark's warmup phase and therefore is not representative of the actual processing time differences between Hadoop and Spark.
+\paragraph{} We began to experiment with the assumption that Spark would outperform Hadoop due to the fact Apache Spark processes the data in-memory instead of disk after performing a MapReduce. The previous table did not show us what we expected. In fact, we believed Spark would be at least two times faster than Hadoop. When dealing with Big Data, Spark's performance could spike up to three times faster according to Goran Jevtic \cite{1} and according to IBM, Apache Spark can be up to 100 times faster when dealing with smaller workloads \cite{2}. These results could therefore be explained by the fact we aren't dealing with Big Data. Also, the times we obtained might include Spark's warmup phase and therefore is not representative of the actual processing time differences between Hadoop and Spark.
 
 \section{Description of MapReduce jobs to solve the social network problem} \label{sec:MapReduceDescription}
 \paragraph{}
@@ -220,18 +221,18 @@ This class is used as the output (value of the key-value pair) of the Mapper. It
 
 \bigskip
 \begin{center}
-\begin{minipage}{.7\linewidth}
-924  \hspace{0.9cm}  439, 2409, 6995, 11860, 15416, 43748, 45881 \\
-8941 \hspace{0.7cm}  8943, 8944, 8940 \\
-8942 \hspace{0.7cm}  8939, 8940, 8943, 8944 \\
-9019 \hspace{0.7cm}  9022, 317, 9023 \\
-9020 \hspace{0.7cm}  9021, 9016, 9017, 9022, 317, 9023 \\
-9021 \hspace{0.7cm}  9020, 9016, 9017, 9022, 317, 9023 \\
-9022 \hspace{0.7cm}  9019, 9020, 9021, 317, 9016, 9017, 9023 \\
-9990 \hspace{0.7cm}  13134, 13478, 13877, 34299, 34485, 34642, 37941 \\
-9992 \hspace{0.7cm}  9987, 9989, 35667, 9991 \\
-9993 \hspace{0.7cm}  9991, 13134, 13478, 13877, 34299, 34485, 34642, 37941 \\
-\end{minipage}
+  \begin{minipage}{.7\linewidth}
+    924  \hspace{0.9cm}  439, 2409, 6995, 11860, 15416, 43748, 45881 \\
+    8941 \hspace{0.7cm}  8943, 8944, 8940 \\
+    8942 \hspace{0.7cm}  8939, 8940, 8943, 8944 \\
+    9019 \hspace{0.7cm}  9022, 317, 9023 \\
+    9020 \hspace{0.7cm}  9021, 9016, 9017, 9022, 317, 9023 \\
+    9021 \hspace{0.7cm}  9020, 9016, 9017, 9022, 317, 9023 \\
+    9022 \hspace{0.7cm}  9019, 9020, 9021, 317, 9016, 9017, 9023 \\
+    9990 \hspace{0.7cm}  13134, 13478, 13877, 34299, 34485, 34642, 37941 \\
+    9992 \hspace{0.7cm}  9987, 9989, 35667, 9991 \\
+    9993 \hspace{0.7cm}  9991, 13134, 13478, 13877, 34299, 34485, 34642, 37941 \\
+  \end{minipage}
 \end{center}
 
 \section{Instructions to run the code}
@@ -250,7 +251,7 @@ This class is used as the output (value of the key-value pair) of the Mapper. It
   \bigskip
   \begin{center}
     \begin{minipage}{.7\linewidth}
-    \textit{\$ time spark-submit -{}-class SparkWordCount \textbackslash \\ YOUR\_LINK/target/sparkwordcount-0.0.1-SNAPSHOT.jar \textbackslash \\  YOUR\_LINK/YOUR\_FILE.txt}
+      \textit{\$ time spark-submit -{}-class SparkWordCount \textbackslash \\ YOUR\_LINK/target/sparkwordcount-0.0.1-SNAPSHOT.jar \textbackslash \\  YOUR\_LINK/YOUR\_FILE.txt}
     \end{minipage}
   \end{center}
 \end{enumerate}
@@ -271,7 +272,10 @@ This class is used as the output (value of the key-value pair) of the Mapper. It
 In conclusion, this study helped us achieve a deeper understanding Big Data and how to use software such as Hadoop and Spark to solve intricate data problems. We experimented with simple programs such as a WordCount program and used that knowledge to solve a more complex social networking problem (\textit{People You Might Know Algorithm}). By executing our own experiments, we also measured the performances of Hadoop and Spark's software and were able to conclude that in fact Spark operates at a much faster pace than Hadoop. The understanding of these softwares is primordial in today’s industry in order to achieve optimal performance when dealing with Big Data and complex data problems and therefore we are content with this assignment. The next step would be to create an application using Apache Spark and see how it performs.
 
 \begin{thebibliography} {}
-\bibitem{1} Goran Jevtic. (2020) Hadoop vs Spark – Detailed Comparison. [Online] Available: \url{https://phoenixnap.com/kb/hadoop-vs-spark#ftoc-heading-4}
+\bibitem{1} Goran Jevtic. (2020) Hadoop vs Spark -- Detailed Comparison. [Online] \\  Available: \url{https://phoenixnap.com/kb/hadoop-vs-spark#ftoc-heading-4}
+\bibitem{2} IBM Cloud Education. (2021) Hadoop vs. Spark: What's the Difference? [Online] \\ Available: \url{https://www.ibm.com/cloud/blog/hadoop-vs-spark}
+\bibitem{3} Edureka! . (2021) MapReduce Tutorial -- Fundamentals of MapReduce [Online] \\ Available: \url{https://www.edureka.co/blog/mapreduce-tutorial/}
+\bibitem{4} Cloudera. (2021) Developing and running an Apache Spark WordCount application [Online] \\ Available: \url{https://docs.cloudera.com/runtime/7.2.10/developing-spark-applications/topics/spark-develop-run-wordcount-app.html}
 \end{thebibliography}
 
 \end{document}
