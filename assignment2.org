@@ -36,6 +36,7 @@
 \end{titlepage}
 
 \tableofcontents
+\pagebreak[]
 
 \section{Abstract}
 \paragraph{} In this laboratory, we had the opportunity to explore the MapReduce paradigm. We successfully compared the performance of the algorithm on Linux, Hadoop and Spark with different experiments. At first, we compared Spark and Hadoop in a simple WordCount program to observe the difference in performance between the two. We ran it all on AWS, Amazon’s cloud computing platform, by creating an EC2 instance.
