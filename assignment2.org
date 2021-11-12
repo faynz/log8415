@@ -1,0 +1,193 @@
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [11pt]
+#+LATEX_HEADER: \usepackage{fullpage}
+#+LATEX_HEADER: \usepackage{amssymb}
+#+LATEX_HEADER: \usepackage[english]{babel}
+#+LATEX_HEADER: \usepackage{graphicx,multirow}
+#+LATEX_HEADER: \usepackage{caption}
+#+LATEX_HEADER: \usepackage{hyperref}
+#+LATEX_HEADER: \usepackage{amsmath}
+#+LATEX_HEADER: \usepackage{enumitem}
+#+LATEX_HEADER: \usepackage{subfig}
+#+LATEX_HEADER: \usepackage{placeins}
+
+#+LATEX_HEADER: \captionsetup{font=bf,belowskip=8pt}
+
+#+OPTIONS: toc:nil
+#+BEGIN_SRC latex
+
+\begin{document}
+\begin{titlepage}
+  \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+  \center
+  \textsc{\LARGE Polytechnique Montréal}\\[1.5cm]
+  \textsc{\Large LOG8415 : Lab 2}\\[0.5cm]
+  \textsc{\large Advanced Concepts in Cloud Computing}\\[0.5cm]
+  \HRule\\[0.4cm]
+          {\huge\bfseries MapReduce with Hadoop and Spark on AWS}\\[0.4cm]
+          \HRule\\[1.5cm]
+                  {\large\textit{Authors}}\\
+                  Yanis \textsc{Toubal} (1960266)\\
+                  Guy-Hermann \textsc{Adiko} (2005119)\\
+                  Estefan \textsc{Vega-Calcada} (1934346)\\
+                  \vfill\vfill\vfill {\large\today} \vfill\vfill
+                  \includegraphics{poly_logo.png}\\[1cm]
+                  \vfill
+\end{titlepage}
+
+\tableofcontents
+
+\section{Abstract}
+\paragraph{} In this laboratory, we had the opportunity to explore the MapReduce paradigm. We successfully compared the performance of the algorithm on Linux, Hadoop and Spark with different experiments. At first, we compared Spark and Hadoop in a simple WordCount program to observe the difference in performance between the two. We ran it all on AWS, Amazon’s cloud computing platform, by creating an EC2 instance.
+
+
+\paragraph{Keywords:}Amazon Elastic Compute Cloud, Benchmark, Instance Performance, Cloud Application, MapReduce, Hadoop, Spark, Big Data, AWS
+\pagebreak
+
+\section{Introduction} \label{sec:introduction}
+\paragraph{} In this laboratory, we had the opportunity to explore the MapReduce paradigm. We successfully compared the performance of the algorithm on Linux, Hadoop and Spark with different experiments. At first, we compared Spark and Hadoop in a simple WordCount program to observe the difference in performance between the two. We ran it all on AWS, Amazon’s cloud computing platform, by creating an EC2 instance.
+
+% \cite{1}
+\subsection{Hypotheses}
+\paragraph{} We began to experiment with the assumption that Spark would outperform Hadoop due to the fact Apache Spark processes the data in-memory instead of disk after performing a MapReduce. The following section will show and explain the results we obtained while running the WordCount program on Hadoop and Spark
+
+
+\section{Experiments with WordCount program}
+\section{Performance comparison of Hadoop vs Linux}
+
+\begin{center}
+  \captionof{figure}{Comparison between Hadoop and Linux for the 9 texts}
+  \includegraphics[width=\linewidth]{./images/hadoop-linux.png}
+\end{center}
+
+\begin{center}
+  \captionof{table}{Comparison between Hadoop and Linux for the 9 texts} \label{tab:regression_analysis_summary}
+  \begin{tabular}{|*{3}{c|}}
+    \hline
+    \textbf{Document} & \textbf{Hadoop time (in s)} & \textbf{Linux time (in s)} \\
+    \hline
+    buchanj-midwinter-00-t.txt & 6.608 & 0.172 \\
+    \hline
+    carman-farhorizons-00-t.txt & 5.512 & 0.016 \\
+    \hline
+    colby-champlain-00-t.txt & 6.216 & 0.076 \\
+    \hline
+    cheyneyp-darkbahama-00-t.txt & 8.720 & 0.212 \\
+    \hline
+    delamare-bumps-00-t.txt & 8.288 & 0.028 \\
+    \hline
+    charlesworth-scene-00-t.txt & 5.136 & 0.132\\
+    \hline
+    delamare-lucy-00-t.txt & 4.936 & 0.028\\
+    \hline
+    delamare-myfanwy-00-t.txt & 5.004 & 0.020\\
+    \hline
+    delamare-penny-00-t.txt & 4.544 & 0.012 \\
+    \hline
+  \end{tabular}
+\end{center}
+\pagebreak
+
+\section{Performance comparison of Hadoop vs Spark on AWS}
+
+\subsection{Results}
+
+\section{Description of MapReduce jobs to solve the social network problem}
+\paragraph{}
+For the social network problem, we need an algorithm that recommends friends for each user. More particularly, It needs to find the top 10 of new friends recommendation based on the number of mutual friends. Based on the information given, we can conclude that a MapReduce approach to this problem is very much possible since there is a high amount of data involved (big data) and since this problem is very much parallelizable with the right approach.
+
+\bigskip
+
+Our approach was that for each user we wanted the key-value pair to contain the user as the key and a recommended friend as the value. To achieve this, here is how we separated the map and the reduce part.
+
+\subsection{Map}
+\paragraph{}
+For the map part, the idea was to represent two types of relationships between the users which are a relationship of friendship (already friends) and a relationship of potential friend recommendation. Here we use potential because at this stage we can't know if the two users are already friends or not. This verification will be done during the reduce part. For this problem, the friends of the current user are represented by a friendship relationship since they are already friends. As for the potential friends, they are simply represented by the pairs of permutations between the friends of the current user. As an example, if user 0 has friends {1,2,3}, the potential friends are (1,2) (2,1) (1,3) (3,1) (2,3) (3,2). Since each map process uses as an input one user and it's friend, which are represented by a line of input text file, it's easy to scale up by using, for example, one worker per line of text.
+
+\subsection{Reduce}
+\paragraph{}
+The reduce part is where most of the work happens in this situation. The idea here is to separate, for the current user, the users that are already friends with him and the users that are recommended as new friends. For the users that are already friends with the user, they are going to be ignored. As for the users that are recommended as new friends, they will be stocked along with the number of mutual friends between them and the current user. The number of mutual friends is given by incrementing everytime there is an occurrence of the recommended user (1 per mutual friend). Finally, the 10 top users with the most mutual friends with the current user will be displayed.
+
+\section{Algorithm description}
+
+\subsection{Main}
+\paragraph{}
+The main class is very straightforward. It defines the configuration of the Hadoop Job that will be run. This includes the Mapper class, the Reducer class, the input, the output and more.
+\subsection{Map}
+\begin{enumerate}
+\item The mapper takes the line of input from the input file and separates the current user (key) and it's friends (value).
+
+\item An iteration is done through it's friend list and the program output the current user and his friend with an already friend relationship. The output is a key-value pair with the current user as key and a FriendRelation (see below) as the value.
+
+\item After that, the program finds all the unique pairs of permutations between the friends of the current user and output a potential recommended friend for each permutation. The output is then a friend of the current user as a key and a FriendRelation as the value.
+\end{enumerate}
+
+\subsection{FriendRelation}
+\paragraph{}
+This class is used as the output (value of the key-value pair) of the Mapper. It defines a user with it's relationship with the current user (defined in the key of the key-value pair). For example the key-value pair {1, (2, -1)} could be interpreted as \textit{user 1 is already friend with user 2}.
+
+\subsection{Reduce}
+\begin{enumerate}
+\item The reducer takes all the FriendRelation received from the current user (defined in the key) and iterates over all of them. As mentionned before, if the relationship value in the FriendRelation is -1 then the users are already friends. In that case we put the user in a separate array (currentFriends ArrayList). If it's not -1 then they are potential friends if the other user isn't in the friends array. We then either add the new potential friend in the map (friendsRecommendation HashMap) with a value of 1 or we increment the value by 1. As previously mentionned, this value represents the number of mutual friends between the current user and the other user.
+
+\item The next step is to take the map containing potential friends and to sort it in descending order of the number of mutual friends (value of the map). A TreeSet with a custom comparator was used for that purpose. The custom comparator first compares the value of 2 elements and then, if the values are equal, it compares the user id and prioritizes the smaller one.
+
+\item The last step is to take the first 10 ordered recommended friends by ignoring those who are already friends with the current user. Each recommendation is added to the result that will be outputed.
+\end{enumerate}
+
+
+\section{Recommendations of connection for some users}
+
+\paragraph{} By looking at the output file provided by the Hadoop MapReduce job, here are the results we found for the requested users:
+
+\bigskip
+
+\noindent 924    439,2409,6995,11860,15416,43748,45881 \\
+8941    8943,8944,8940 \\
+8942    8939,8940,8943,8944 \\
+9019    9022,317,9023 \\
+9020    9021,9016,9017,9022,317,9023 \\
+9021    9020,9016,9017,9022,317,9023 \\
+9022    9019,9020,9021,317,9016,9017,9023 \\
+9990    13134,13478,13877,34299,34485,34642,37941 \\
+9992    9987,9989,35667,9991 \\
+9993    9991,13134,13478,13877,34299,34485,34642,37941 \\
+
+\section{Instructions to run the code}
+
+\subsection{WordCount on Spark}
+\begin{enumerate}
+\item Install Spark 3.2.0 and maven package
+\item Create a directory (/home/ubuntu/SparkDir/sparkwordcount/com/tp2/wordcount) where SparkWordCount.scala program will be
+\item copy-paste the pom.xml file (available in the git repository) in ~/sparkwordcount and generate the application jar by running mvn package command from that same directory. Note: this will generate sparkwordcount-0.0.1-SNAPSHOT.jar in /target directory (~/sparkwordcount/target)
+\item Launch the SparkWordCount.scala script from its directory (~/tp2/wordcount) by typing the following command:
+\bigskip
+\begin{center}
+  \textit{time spark-submit -{}-class SparkWordCount \$YOUR\_LINK/target/sparkwordcount-0.0.1-SNAPSHOT.jar \$YOUR\_LINK/YOUR\_FILE.txt}
+\end{center}
+\end{enumerate}
+
+\subsection{PeopleYouMayKnow}
+
+\bigskip The link for the git repo that contains the code is:
+\url{https://github.com/ytoubal/SocialMediaProblem}
+
+\bigskip \noindent Running the code with the jar file is the easiest way to run the code without even needing Hadoop configured in the environment. The only requirement is Java to run the jar file and a Linux Distribution.
+
+\bigskip \noindent The jar file is located in the \textbf{out/artifacts/PeopleYouMayKnow\_jar/} directory and the command to run it is simply:
+
+\bigskip \textit{java -jar PeopleYouMayKnow.jar path/to/input/file path/to/output/directory}
+
+\section{Conclusion}
+\paragraph{}
+
+\begin{thebibliography} {}
+\bibitem{1} Amazon Web Services. (2019) Amazon EC2. [Online] Available: \url{https://aws.amazon.com/ec2/?sc_channel=PS&sc_campaign=acquisition_CA&sc_publisher=google&sc_medium=ACQ-R%7CPS-GO%7CBrand%7CDesktop%7CSU%7CCompute%7CEC2%7CCA%7CEN%7CText%7CHV&sc_content=ec2_p&sc_detail=aws%20ec2&sc_category=Compute&sc_segment=293632235728&sc_matchtype=p&sc_country=CA&s_kwcid=AL!4422!3!293632235728!p!!g!!aws%20ec2&ef_id=CjwKCAiAhp_jBRAxEiwAXbniXW4VNB3YH9HfaHYWdecb0vJMXWoO5hI77E3TBV3QuJ7pgtdhgfhRpBoCK34QAvD_BwE:G:s}
+\bibitem{2} S. A. Abtahizadeh, \emph{LOG8415: Lab 1 Selecting VM instances in the Cloud through benchmarking}, LOG8415: Advanced Concepts of Cloud Computing, 2019.
+\bibitem{3} A. Kopytov, SysBench manual, MySQL AB, 2009. [Online]. Available: \url{http://imysql.com/wp-content/uploads/2014/10/sysbench-manual.pdf}
+\bibitem{4} B. Martin. (2008) Using Bonnie++ for filesystem performance benchmarking. [Online]. Available: https://www.linux.com/news/using-bonnie-filesystem-performance-benchmarking
+\bibitem{5} UbuntuWiki. (2018) stress-ng. [Online]. Available: \url{https://wiki.ubuntu.com/Kernel/Reference/stress-ng}
+\end{thebibliography}
+
+\end{document}
+#+END_SRC
