@@ -47,17 +47,12 @@
 \section{Introduction} \label{sec:introduction}
 \paragraph{} In this laboratory, we had the opportunity to explore the MapReduce paradigm. We successfully compared the performance of the algorithm on Linux, Hadoop and Spark with different experiments. At first, we compared Spark and Hadoop in a simple WordCount program to observe the difference in performance between the two. We ran it all on AWS, Amazon’s cloud computing platform, by creating an EC2 instance.
 
-In this paper, we use benchmarking on multiple Amazon EC2 instances to find
-the best fit for a cloud application with storage, heavy data operations and
-heavy computation needs.
 \bigskip
 
 This paper presents some of our experiments with a WordCount program (section ~\ref{sec:WordCount}), the results of our performance comparison between Hadoop and Linux (section ~\ref{sec:HadoopVsLinux}), the results of our performance comparison between Hadoop and Spark (section ~\ref{sec:HadoopVsSpark}) and our solution to a MapReduce program that implements the “People You
 Might Know" social network friendship recommendation algorithm (section ~\ref{sec:MapReduceDescription} & section ~\ref{sec:MapReduceAlgorithm}).
 
 % \cite{1}
-\subsection{Hypotheses}
-\paragraph{} We began to experiment with the assumption that Spark would outperform Hadoop due to the fact Apache Spark processes the data in-memory instead of disk after performing a MapReduce. The following section will show and explain the results we obtained while running the WordCount program on Hadoop and Spark
 
 \section{Experiments with WordCount program} \label{sec:WordCount}
 \section{Performance comparison of Hadoop vs Linux} \label{sec:HadoopVsLinux}
@@ -139,6 +134,8 @@ We used to time command in to measure the time it took to execute the wordcount 
 \end{center}
 
 \subsection{Results}
+
+\paragraph{} We began to experiment with the assumption that Spark would outperform Hadoop due to the fact Apache Spark processes the data in-memory instead of disk after performing a MapReduce. The previous table did not show us what we expected. In fact, we believed Spark would be at least 2x faster than Hadoop, in this case where we aren't dealing with Big Data. When dealing with Big Data, Spark's performance could spike up to 3x faster according to Goran Jevtic \cite{1}.
 
 \section{Description of MapReduce jobs to solve the social network problem} \label{sec:MapReduceDescription}
 \paragraph{}
@@ -254,11 +251,7 @@ This class is used as the output (value of the key-value pair) of the Mapper. It
 \paragraph{}
 
 \begin{thebibliography} {}
-\bibitem{1} Amazon Web Services. (2019) Amazon EC2. [Online] Available: \url{https://aws.amazon.com/ec2/?sc_channel=PS&sc_campaign=acquisition_CA&sc_publisher=google&sc_medium=ACQ-R%7CPS-GO%7CBrand%7CDesktop%7CSU%7CCompute%7CEC2%7CCA%7CEN%7CText%7CHV&sc_content=ec2_p&sc_detail=aws%20ec2&sc_category=Compute&sc_segment=293632235728&sc_matchtype=p&sc_country=CA&s_kwcid=AL!4422!3!293632235728!p!!g!!aws%20ec2&ef_id=CjwKCAiAhp_jBRAxEiwAXbniXW4VNB3YH9HfaHYWdecb0vJMXWoO5hI77E3TBV3QuJ7pgtdhgfhRpBoCK34QAvD_BwE:G:s}
-\bibitem{2} S. A. Abtahizadeh, \emph{LOG8415: Lab 1 Selecting VM instances in the Cloud through benchmarking}, LOG8415: Advanced Concepts of Cloud Computing, 2019.
-\bibitem{3} A. Kopytov, SysBench manual, MySQL AB, 2009. [Online]. Available: \url{http://imysql.com/wp-content/uploads/2014/10/sysbench-manual.pdf}
-\bibitem{4} B. Martin. (2008) Using Bonnie++ for filesystem performance benchmarking. [Online]. Available: https://www.linux.com/news/using-bonnie-filesystem-performance-benchmarking
-\bibitem{5} UbuntuWiki. (2018) stress-ng. [Online]. Available: \url{https://wiki.ubuntu.com/Kernel/Reference/stress-ng}
+\bibitem{1} Goran Jevtic. (2020) Hadoop vs Spark – Detailed Comparison. [Online] Available: \url{https://phoenixnap.com/kb/hadoop-vs-spark#ftoc-heading-4}
 \end{thebibliography}
 
 \end{document}
