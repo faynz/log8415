@@ -135,7 +135,7 @@ We used to time command in to measure the time it took to execute the wordcount 
 
 \subsection{Results}
 
-\paragraph{} We began to experiment with the assumption that Spark would outperform Hadoop due to the fact Apache Spark processes the data in-memory instead of disk after performing a MapReduce. The previous table did not show us what we expected. In fact, we believed Spark would be at least 2x faster than Hadoop, in this case where we aren't dealing with Big Data. When dealing with Big Data, Spark's performance could spike up to 3x faster according to Goran Jevtic \cite{1}.
+\paragraph{} We began to experiment with the assumption that Spark would outperform Hadoop due to the fact Apache Spark processes the data in-memory instead of disk after performing a MapReduce. The previous table did not show us what we expected. In fact, we believed Spark would be at least 2x faster than Hadoop. When dealing with Big Data, Spark's performance could spike up to 3x faster according to Goran Jevtic \cite{1}. These results could therefore be explained by the fact we aren't dealing with Big Data. Also, the times we obtained might include Spark's warmup phase and therefore is not representative of the actual processing time differences between Hadoop and Spark.
 
 \section{Description of MapReduce jobs to solve the social network problem} \label{sec:MapReduceDescription}
 \paragraph{}
@@ -226,9 +226,14 @@ This class is used as the output (value of the key-value pair) of the Mapper. It
 
 \subsection{WordCount on Spark}
 \begin{enumerate}
-\item Install Spark 3.2.0 and maven package
-\item Create a directory (/home/ubuntu/SparkDir/sparkwordcount/com/tp2/wordcount) where SparkWordCount.scala program will be
-\item copy-paste the pom.xml file (available in the git repository) in ~/sparkwordcount and generate the application jar by running mvn package command from that same directory. Note: this will generate sparkwordcount-0.0.1-SNAPSHOT.jar in /target directory (~/sparkwordcount/target)
+\item Install Spark 3.2.0 and Maven
+\item Create a new directory (e.g. sparkwordcount) which will include the SparkWordCount.scala program
+\item Copy-paste the pom.xml file (available in the git repository) in the \textit{sparkwordcount} directory and generate the application jar by running the following command in that same directory:
+
+  \begin{center} \textit{\$ mvn package} \end{center}
+
+  Note: this will generate sparkwordcount-0.0.1-SNAPSHOT.jar in a new directory (/target) (~/sparkwordcount/target)
+
 \item Launch the SparkWordCount.scala script from its directory (~/tp2/wordcount) by typing the following command:
   \bigskip
   \begin{center}
