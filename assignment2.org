@@ -48,11 +48,11 @@ When dealing with Big Data, we can choose from a variety of softwares to manage 
 
 \section{Introduction} \label{sec:introduction}
 \paragraph{} In this laboratory, we had the opportunity to explore the MapReduce paradigm. We successfully compared the performance of the algorithm on Linux, Hadoop and Spark with different experiments. At first, we compared their performances in a simple WordCount program and observed the differences. The WordCount program simply counts the occurrence of every single word in a document. We ran it all on AWS, Amazon's cloud computing platform, by creating an EC2 instance.
-Then, we used Hadoop and MapReduce to solve a social networking problem and process bigger data sets. The idea was to create a solution to suggest profiles (A.K.A People You May Know Algorithm).
+Then, we used Hadoop and MapReduce to solve a social networking problem and process bigger data sets. The goal is to suggest friendships based on their connection (A.K.A People You May Know Algorithm).
 \bigskip
 
 \noindent This paper presents some of our experiments with a WordCount program (section ~\ref{sec:WordCount}), the results of our performance comparison between Hadoop and Linux (section ~\ref{sec:HadoopVsLinux}), the results of our performance comparison between Hadoop and Spark (section ~\ref{sec:HadoopVsSpark}) and our solution to the MapReduce program that implements the “People You
-Might Know" social network friendship recommendation algorithm (section ~\ref{sec:MapReduceDescription} & section ~\ref{sec:MapReduceAlgorithm}).
+Might Know" social network friendship recommendation algorithm (section ~\ref{sec:MapReduceDescription} and section ~\ref{sec:MapReduceAlgorithm}).
 
 % \cite{1}
 
@@ -62,10 +62,6 @@ Might Know" social network friendship recommendation algorithm (section ~\ref{se
 We had the opportunity to explore the MapReduce paradigm. We successfully compared the performance of the algorithm on Linux, Hadoop and Spark with different experiments. At first, we compared Linux and Hadoop in a simple WordCount program to observe the difference in performance between the two. And then, we compared Hadoop vs Spark on AWS, Amazon’s cloud computing platform, by creating an EC2 instance.
 
 \section{Performance comparison of Hadoop vs Linux} \label{sec:HadoopVsLinux}
-
-\begin{center}
-  The result shows that our local machine Linux outperformed Hadoop.
-\end{center}
 
 \begin{center}
   \captionof{figure}{Comparison between Hadoop and Linux for the 9 texts}
@@ -98,6 +94,9 @@ We had the opportunity to explore the MapReduce paradigm. We successfully compar
     \hline
   \end{tabular}
 \end{center}
+
+\subsection{Results}
+\paragraph{} The results show that our local Linux machine outperformed Hadoop by alot. This can be explained by the fact Hadoop is meant to process very large data sets. In this scenario, we are dealing with pretty small data sets, that is why our local Linux easily outperformed Hadoop. We would expect Hadoop to perform much better than our local Linux machine if we were dealing with larger data sets, such as the \textit{People You May Know} algorithm ~\ref{sec:MapReduceDescription}.
 
 \section{Performance comparison of Hadoop vs Spark on AWS} \label{sec:HadoopVsSpark}
 
