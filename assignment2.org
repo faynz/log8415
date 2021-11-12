@@ -52,13 +52,11 @@ Then, we used Hadoop and MapReduce to solve a social networking problem and proc
 \bigskip
 
 \noindent This paper presents some of our experiments with a WordCount program (section ~\ref{sec:WordCount}), the results of our performance comparison between Hadoop and Linux (section ~\ref{sec:HadoopVsLinux}), the results of our performance comparison between Hadoop and Spark (section ~\ref{sec:HadoopVsSpark}) and our solution to the MapReduce program that implements the \textit{People You
-Might Know} social network friendship recommendation algorithm (section ~\ref{sec:MapReduceDescription} and section ~\ref{sec:MapReduceAlgorithm}). All the code presented in this report can be found on our GitHub repository. The link is provided in the Annex (section ~\ref{sec:Annex}).
-
-% \cite{1}
+  Might Know} social network friendship recommendation algorithm (section ~\ref{sec:MapReduceDescription} and section ~\ref{sec:MapReduceAlgorithm}). All the code presented in this report can be found on our GitHub repository. The link is provided in the Annex (section ~\ref{sec:Annex}).
 
 \section{Experiments with WordCount program} \label{sec:WordCount}
 
-\paragraph{} We implemented our own WordCount program in Java. In the two following sections (section ~\ref{sec:HadoopVsLinux} and ~\ref{sec:HadoopVsSpark}), we describe the performances of our program using Linux, Hadoop and Spark. The code we used for our Apache Spark program is inspired from Cloudera's solution \cite{4}. The code we used for our Apache Hadoop program is inspired by the examples from Hadoop's official documentation \cite{5}.
+\paragraph{} We implemented our own version of a WordCount program in Java. In the two following sections (section ~\ref{sec:HadoopVsLinux} and ~\ref{sec:HadoopVsSpark}), we present the performances of our program using Linux, Hadoop and Spark. The code we used for our Apache Spark program is inspired from Cloudera's solution \cite{4} and the one we used for our Apache Hadoop program is inspired by the examples from Hadoop's official documentation \cite{5}.
 
 \section{Performance comparison of Hadoop vs Linux} \label{sec:HadoopVsLinux}
 
@@ -152,6 +150,14 @@ For the social network problem, we need an algorithm that recommends friends for
 \bigskip
 
 Our approach was that for each user we wanted the key-value pair to contain the user as the key and a recommended friend as the value. To achieve this, here is how we separated the map and the reduce part.
+
+\bigskip
+
+\begin{center}
+  \begin{minipage}{.7\linewidth}
+    \textbf{Note}: The following code runs Hadoop in standalone mode, therefore we only use a single node to execute the program. Performances may vary depending on the user's computer. The average execution time was around one minute.
+  \end{minipage}
+\end{center}
 
 \subsection{Map}
 \paragraph{}
@@ -275,7 +281,7 @@ In conclusion, this study helped us achieve a deeper understanding Big Data and 
 \bibitem{3} Edureka! . (2021) MapReduce Tutorial -- Fundamentals of MapReduce [Online] \\ Available: \url{https://www.edureka.co/blog/mapreduce-tutorial/}
 \bibitem{4} Cloudera. (2021) Developing and running an Apache Spark WordCount application [Online] \\ Available: \url{https://docs.cloudera.com/runtime/7.2.10/developing-spark-applications/topics/spark-develop-run-wordcount-app.html}
 \bibitem{5} The Apache Software Foundation. (2021) Apache Hadoop -- MapReduce Tutorial [Online] \\ Available:
-\url{https://hadoop.apache.org/docs/stable/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html}
+  \url{https://hadoop.apache.org/docs/stable/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html}
 \end{thebibliography}
 
 \section{Annex} \label{sec:Annex}
