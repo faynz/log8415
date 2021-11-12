@@ -86,7 +86,6 @@
     \hline
   \end{tabular}
 \end{center}
-\pagebreak
 
 \section{Performance comparison of Hadoop vs Spark on AWS}
 
@@ -99,6 +98,38 @@ We used to time command in to measure the time it took to execute the wordcount 
 \item[--] Hadoop: time hadoop \dots
 \item[--] Apache Spark : time spark-submit \dots
 \end{itemize}
+
+\begin{center}
+  \captionof{figure}{Comparison between Hadoop and Spark for the 9 texts}
+  \includegraphics[width=\linewidth]{./images/hadoop-spark.png}
+\end{center}
+
+\begin{center}
+  \captionof{table}{Comparison between Hadoop and Spark for the 9 texts} \label{tab:regression_analysis_summary}
+  \begin{tabular}{|*{3}{c|}}
+    \hline
+    \textbf{Document} & \textbf{Hadoop time (in s)} & \textbf{Spark time (in s)} \\
+    \hline
+    buchanj-midwinter-00-t.txt & 12.15 & 12.51 \\
+    \hline
+    carman-farhorizons-00-t.txt & 13.38 & 12.29 \\
+    \hline
+    colby-champlain-00-t.txt & 12.97 & 11.71 \\
+    \hline
+    cheyneyp-darkbahama-00-t.txt & 15.88 & 11.50 \\
+    \hline
+    delamare-bumps-00-t.txt & 12.18 & 12.12 \\
+    \hline
+    charlesworth-scene-00-t.txt & 12.7 & 11.81 \\
+    \hline
+    delamare-lucy-00-t.txt & 13.26 & 11.96 \\
+    \hline
+    delamare-myfanwy-00-t.txt & 13.59 & 12.53 \\
+    \hline
+    delamare-penny-00-t.txt & 13.31 & 12.44 \\
+    \hline
+  \end{tabular}
+\end{center}
 
 \subsection{Results}
 
