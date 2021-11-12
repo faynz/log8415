@@ -47,13 +47,20 @@
 \section{Introduction} \label{sec:introduction}
 \paragraph{} In this laboratory, we had the opportunity to explore the MapReduce paradigm. We successfully compared the performance of the algorithm on Linux, Hadoop and Spark with different experiments. At first, we compared Spark and Hadoop in a simple WordCount program to observe the difference in performance between the two. We ran it all on AWS, Amazon’s cloud computing platform, by creating an EC2 instance.
 
+In this paper, we use benchmarking on multiple Amazon EC2 instances to find
+the best fit for a cloud application with storage, heavy data operations and
+heavy computation needs.
+\bigskip
+
+This paper presents some of our experiments with a WordCount program (section ~\ref{sec:WordCount}), the results of our performance comparison between Hadoop and Linux (section ~\ref{sec:HadoopVsLinux}), the results of our performance comparison between Hadoop and Spark (section ~\ref{sec:HadoopVsSpark}) and our solution to a MapReduce program that implements the “People You
+Might Know" social network friendship recommendation algorithm (section ~\ref{sec:MapReduceDescription} & section ~\ref{sec:MapReduceAlgorithm}).
+
 % \cite{1}
 \subsection{Hypotheses}
 \paragraph{} We began to experiment with the assumption that Spark would outperform Hadoop due to the fact Apache Spark processes the data in-memory instead of disk after performing a MapReduce. The following section will show and explain the results we obtained while running the WordCount program on Hadoop and Spark
 
-
-\section{Experiments with WordCount program}
-\section{Performance comparison of Hadoop vs Linux}
+\section{Experiments with WordCount program} \label{sec:WordCount}
+\section{Performance comparison of Hadoop vs Linux} \label{sec:HadoopVsLinux}
 
 \begin{center}
   \captionof{figure}{Comparison between Hadoop and Linux for the 9 texts}
@@ -87,7 +94,7 @@
   \end{tabular}
 \end{center}
 
-\section{Performance comparison of Hadoop vs Spark on AWS}
+\section{Performance comparison of Hadoop vs Spark on AWS} \label{sec:HadoopVsSpark}
 
 \paragraph{} For this experimentation, we leveraged AWS EC2 instances. As for the instance type, we used t3.xlarge which enables 4 vCPUs and 16 GiB of Memory. Below is the report for performance of Hadoop vs Spark. Basically, Spark outperforms Hadoop as we can see in the graph. To properly evaluate both Hadoop and Spark, we ran the WordCount three times on each machine and took the average time for both. In the following table (Table 2: Comparison between Hadoop and Spark for the 9 texts), we only show the average and not the individual results of each execution to avoid overloading this report. We also presented the data in a plot for a more visual comparison.
 
@@ -133,7 +140,7 @@ We used to time command in to measure the time it took to execute the wordcount 
 
 \subsection{Results}
 
-\section{Description of MapReduce jobs to solve the social network problem}
+\section{Description of MapReduce jobs to solve the social network problem} \label{sec:MapReduceDescription}
 \paragraph{}
 For the social network problem, we need an algorithm that recommends friends for each user. More particularly, It needs to find the top 10 of new friends recommendation based on the number of mutual friends. Based on the information given, we can conclude that a MapReduce approach to this problem is very much possible since there is a high amount of data involved (big data) and since this problem is very much parallelizable with the right approach.
 
@@ -149,7 +156,7 @@ For the map part, the idea was to represent two types of relationships between t
 \paragraph{}
 The reduce part is where most of the work happens in this situation. The idea here is to separate, for the current user, the users that are already friends with him and the users that are recommended as new friends. For the users that are already friends with the user, they are going to be ignored. As for the users that are recommended as new friends, they will be stocked along with the number of mutual friends between them and the current user. The number of mutual friends is given by incrementing everytime there is an occurrence of the recommended user (1 per mutual friend). Finally, the 10 top users with the most mutual friends with the current user will be displayed.
 
-\section{Algorithm description}
+\section{Algorithm description} \label{sec:MapReduceAlgorithm}
 
 \subsection{Main}
 \paragraph{}
