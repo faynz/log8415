@@ -164,9 +164,9 @@ The main class is very straightforward. It defines the configuration of the Hado
 \begin{enumerate}
 \item The mapper takes the line of input from the input file and separates the current user (key) and it's friends (value).
 
-\item An iteration is done through it's friend list and the program output the current user and his friend with an already friend relationship. The output is a key-value pair with the current user as key and a FriendRelation (see below) as the value.
+\item An iteration is done through it's friend list and the program output the current user and his friend with an \textit{already friend} relationship. The output is a key-value pair with the current user as key and a FriendRelation (see below) as the value.
 
-\item After that, the program finds all the unique pairs of permutations between the friends of the current user and output a potential recommended friend for each permutation. The output is then a friend of the current user as a key and a FriendRelation as the value.
+\item After that, the program finds all the \textbf{unique pairs of permutations} between the friends of the current user and output a potential recommended friend for each permutation. The output is then a friend of the current user as a key and a FriendRelation as the value.
 \end{enumerate}
 
 \begin{center}
