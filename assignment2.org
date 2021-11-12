@@ -154,6 +154,12 @@ The reduce part is where most of the work happens in this situation. The idea he
 \subsection{Main}
 \paragraph{}
 The main class is very straightforward. It defines the configuration of the Hadoop Job that will be run. This includes the Mapper class, the Reducer class, the input, the output and more.
+
+\begin{center}
+  \captionof{figure}{Main class PeopleYouMayKnow.java}
+  \includegraphics[width=\linewidth]{./images/6-main.png}
+\end{center}
+
 \subsection{Map}
 \begin{enumerate}
 \item The mapper takes the line of input from the input file and separates the current user (key) and it's friends (value).
@@ -163,9 +169,19 @@ The main class is very straightforward. It defines the configuration of the Hado
 \item After that, the program finds all the unique pairs of permutations between the friends of the current user and output a potential recommended friend for each permutation. The output is then a friend of the current user as a key and a FriendRelation as the value.
 \end{enumerate}
 
+\begin{center}
+  \captionof{figure}{Mapper class Mapper.java}
+  \includegraphics[width=\linewidth]{./images/6-map.png}
+\end{center}
+
 \subsection{FriendRelation}
 \paragraph{}
 This class is used as the output (value of the key-value pair) of the Mapper. It defines a user with it's relationship with the current user (defined in the key of the key-value pair). For example the key-value pair {1, (2, -1)} could be interpreted as \textit{user 1 is already friend with user 2}.
+
+\begin{center}
+  \captionof{figure}{FriendRelation class FriendRelation.java}
+  \includegraphics[width=\linewidth]{./images/6-friendrelation.png}
+\end{center}
 
 \subsection{Reduce}
 \begin{enumerate}
@@ -176,6 +192,14 @@ This class is used as the output (value of the key-value pair) of the Mapper. It
 \item The last step is to take the first 10 ordered recommended friends by ignoring those who are already friends with the current user. Each recommendation is added to the result that will be outputed.
 \end{enumerate}
 
+\begin{center}
+  \captionof{figure}{Reducer class Reducer.java}
+  \includegraphics[width=\linewidth]{./images/6-reduce.png}
+\end{center}
+
+\begin{center}
+  \includegraphics[width=\linewidth]{./images/6-reduce2.png}
+\end{center}
 
 \section{Recommendations of connection for some users}
 
@@ -202,10 +226,10 @@ This class is used as the output (value of the key-value pair) of the Mapper. It
 \item Create a directory (/home/ubuntu/SparkDir/sparkwordcount/com/tp2/wordcount) where SparkWordCount.scala program will be
 \item copy-paste the pom.xml file (available in the git repository) in ~/sparkwordcount and generate the application jar by running mvn package command from that same directory. Note: this will generate sparkwordcount-0.0.1-SNAPSHOT.jar in /target directory (~/sparkwordcount/target)
 \item Launch the SparkWordCount.scala script from its directory (~/tp2/wordcount) by typing the following command:
-\bigskip
-\begin{center}
-  \textit{time spark-submit -{}-class SparkWordCount \$YOUR\_LINK/target/sparkwordcount-0.0.1-SNAPSHOT.jar \$YOUR\_LINK/YOUR\_FILE.txt}
-\end{center}
+  \bigskip
+  \begin{center}
+    \textit{time spark-submit -{}-class SparkWordCount \$YOUR\_LINK/target/sparkwordcount-0.0.1-SNAPSHOT.jar \$YOUR\_LINK/YOUR\_FILE.txt}
+  \end{center}
 \end{enumerate}
 
 \subsection{PeopleYouMayKnow}
